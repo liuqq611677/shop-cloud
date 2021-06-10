@@ -1,0 +1,19 @@
+eureka:
+  client:
+    register-with-eureka: true #注册到Eureka的注册中心
+    fetch-registry: true #获取注册实例列表
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+spring:
+  application:
+    name: shop-gateway
+server:
+  port: 9000
+zuul:
+  routes:
+    shop-cate-api: #微服务的名字 spring.application.name
+      path: /cate/** #对应访问的路径
+    shop-goods-api:
+      path: /goods/**
+    shop-member-api:
+      path: /member/**

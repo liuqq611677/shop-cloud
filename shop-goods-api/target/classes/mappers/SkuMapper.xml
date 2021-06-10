@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fh.shop.api.sku.mapper.ISkuMapper">
+
+    <select id="findRecommendNewProductList" resultType="com.fh.shop.api.sku.po.Sku">
+        SELECT sku.id,sku.skuName,sku.price,sku.image
+        FROM t_sku sku LEFT JOIN t_spu spu ON sku.spuId = spu.id
+        WHERE spu.ifGrounding = 1 and spu.ifNewProduct = 1 and spu.ifRecommend = 1
+    </select>
+</mapper>
